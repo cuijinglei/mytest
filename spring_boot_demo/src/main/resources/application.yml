@@ -1,0 +1,23 @@
+server:
+  port: 8080
+  address: 0.0.0.0
+spring:
+  aop:
+    proxy-target-class: false #springboot 2.0 以前动态代理优先jdk，2.0之后优先cglib，这个false关闭优先cglib
+  application:
+    name: cjlllll
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#    # 是否显示sql在控制台
+#    show-sql: true
+#    properties:
+#      hibernate:
+#        format_sql: true
+  datasource:
+    url: jdbc:mysql://192.168.80.137:3306/our?serverTimezone=UTC
+    username: root
+    password: root
+    driverlassame: com.mysql.cj.jdbc.Driver
+
+
