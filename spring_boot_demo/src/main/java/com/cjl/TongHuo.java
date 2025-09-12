@@ -5,10 +5,14 @@ public class TongHuo {
         int a = 136;
         int b = 128;
         int i = a ^ b;
-        int x = (a&b)|(~a&~b);
+        int x = (a & b) | (~a & ~b);
         System.out.println(Integer.toBinaryString(a));
         System.out.println(Integer.toBinaryString(b));
         System.out.println(Integer.toBinaryString(i));
         System.out.println(Integer.toBinaryString(x));
+
+        int c = 1;
+        int d = 2;
+        System.out.println(c==d);
     }
 }
