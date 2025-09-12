@@ -1,5 +1,6 @@
 package com.cjl.controller;
 
+import com.cjl.MyEnum;
 import com.cjl.Test;
 import com.cjl.service.OrderService;
 import com.cjl.service.UserService;
@@ -22,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.sql.DataSource;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +45,8 @@ public class HelloController implements ApplicationContextAware {
     ConfigurableApplicationContext context1;
     @Autowired
     ConfigurableListableBeanFactory factory;
+    @Autowired
+    private MyEnum myEnum;
 
 
     private ApplicationContext context;
@@ -58,6 +62,7 @@ public class HelloController implements ApplicationContextAware {
 
     @RequestMapping("test")
     public String test() {
+        int a = myEnum.getA();
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student");
         logger.info("结果条数:" + maps.size());
         return new Date() + "";
@@ -65,24 +70,27 @@ public class HelloController implements ApplicationContextAware {
 
     @RequestMapping("print")
     public String print() {
-
         logger.info("print:" + new Date());
-        return "现在时间:" + new Date();
+        List<Object> list = new ArrayList<>();
+        while (true) {
+            list.add(new Test());
+        }
+        //return "现在时间:" + new Date();
     }
 
     @RequestMapping("registry")
     public String registry() {
-        ConfigurableListableBeanFactory beanFactory = context1.getBeanFactory();
-        ((BeanDefinitionRegistry)context).registerBeanDefinition("qqq",new RootBeanDefinition(Test.class));
-        ((GenericApplicationContext)context1).registerBean("ccc", Test.class);
-        ((GenericApplicationContext)context1).registerBean(Test.class,()->new Test());
+//        ConfigurableListableBeanFactory beanFactory = context1.getBeanFactory();
+//        ((BeanDefinitionRegistry)context).registerBeanDefinition("qqq",new RootBeanDefinition(Test.class));
+//        ((GenericApplicationContext)context1).registerBean("ccc", Test.class);
+//        ((GenericApplicationContext)context1).registerBean(Test.class,()->new Test());
         logger.info("print:" + new Date());
         return "现在时间:" + new Date();
     }
 
-        @Override
+    @Override
     public void setApplicationContext(ApplicationContext applicationContext) throws BeansException {
         this.context = applicationContext;
-            applicationContext.getEnvironment().getProperty("");
+        applicationContext.getEnvironment().getProperty("");
     }
 }
