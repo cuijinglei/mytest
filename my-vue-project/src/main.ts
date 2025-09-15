@@ -19,4 +19,17 @@ const router = createRouter({
 //3.加载路由器
 const app = createApp(App)
 app.use(router)
+
+//引入pinia
+import {createPinia} from 'pinia'
+const pinia = createPinia()
+app.use(pinia)
+import {userStore} from "@/store/user"
+import {storeToRefs} from 'pinia'
+const user = userStore()
+console.log(user.getUsername)
+const piniaUser = storeToRefs(user)
+user.changeUsername('666')
+console.log(piniaUser)
+app.provide('piniaUser',piniaUser)
 app.mount('#app')
