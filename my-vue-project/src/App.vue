@@ -17,7 +17,7 @@
       <h2>个人信息</h2>
       <p>年龄：<input type="number" v-model="userInfo.age" value="0"/></p>
       <p><input type="radio" v-model="userInfo.sex" value="1"/>男<input type="radio" v-model="userInfo.sex"
-                                                                       value="2">女</p>
+                                                                        value="2">女</p>
       <p>岗位：<select v-model="userInfo.department">
         <option value="dev">开发</option>
         <option value="test">测试</option>
@@ -39,55 +39,55 @@ import MyCompositionApi from './components/MyCompositionApi.vue'
 import { inject } from 'vue'
 
 export default {
-    data() {
-        return {
-            userName: '',
-            salary: '',
-            userInfo: {
-                age: 0,
-                sex: 1,
-                department: 'test',
-                skills: ['java', 'redis', 'mysql']
-            },
-            newSkill: '',
-            isShowDetail: false
-        }
-    },
-    setup() {
-        const piniaUser = inject('piniaUser') // 在setup中注入对象
-        return { piniaUser } // 返回以在模板中使用
-    },
-    methods: {
-        addSalary() {
-            this.salary = (Number(this.salary) || 0) + 2000
-        },
-        clear() {
-            this.userName = ''
-            this.salary = ''
-        },
-        learnNewSkill() {
-            this.userInfo.skills.push(this.newSkill)
-            this.newSkill = ''
-        },
-        showDetail(){
-            this.isShowDetail = !this.isShowDetail
-
-        }
-    },
-    components: {
-        MyCompositionApi
+  data() {
+    return {
+      userName: '',
+      salary: '',
+      userInfo: {
+        age: 0,
+        sex: 1,
+        department: 'test',
+        skills: ['java', 'redis', 'mysql']
+      },
+      newSkill: '',
+      isShowDetail: false
     }
+  },
+  setup() {
+    const piniaUser = inject('piniaUser') // 在setup中注入对象
+    return { piniaUser } // 返回以在模板中使用
+  },
+  methods: {
+    addSalary() {
+      this.salary = (Number(this.salary) || 0) + 2000
+    },
+    clear() {
+      this.userName = ''
+      this.salary = ''
+    },
+    learnNewSkill() {
+      this.userInfo.skills.push(this.newSkill)
+      this.newSkill = ''
+    },
+    showDetail(){
+      this.isShowDetail = !this.isShowDetail
+
+    }
+  },
+  components: {
+    MyCompositionApi
+  }
 }
 </script>
 
 <style scoped>
-  .userInfo span {
-    background-color: gold;
-    margin-left: 10px;
-  }
-  .routerType {
-    background-color: green;
-    height: 110px;
-  }
+.userInfo span {
+  background-color: gold;
+  margin-left: 10px;
+}
+.routerType {
+  background-color: green;
+  height: 110px;
+}
 </style>
 
