@@ -4,12 +4,19 @@ import {createRouter,createWebHistory} from 'vue-router'
 import HomePage from '@/pages/HomePage.vue'
 import AboutPage from '@/pages/AboutPage.vue'
 import NewsPage from '@/pages/NewsPage.vue'
+import NewsDetail1 from '@/pages/NewsDetail1.vue'
+import NewsDetail2 from '@/pages/NewsDetail2.vue'
 //1.配置路由规则
 const routes = [
     {path:"/",redirect:"/home"},   //或者{path:"/",component:HomePage},
     {path:"/home",component:HomePage},
     {path:"/about",component:AboutPage},
-    {path:"/news",component:NewsPage,name:'news'}
+    {path:"/news",component:NewsPage,name:'news',
+        children:[
+            {path:"1",component:NewsDetail1},
+            {path:"2",component:NewsDetail2}
+        ]
+    }
 ]
 //2.创建路由器
 const router = createRouter({

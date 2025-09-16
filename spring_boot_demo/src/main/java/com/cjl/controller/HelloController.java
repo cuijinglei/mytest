@@ -65,7 +65,7 @@ public class HelloController implements ApplicationContextAware {
         int a = myEnum.getA();
         List<Map<String, Object>> maps = jdbcTemplate.queryForList("select * from student");
         logger.info("结果条数:" + maps.size());
-        return new Date() + "";
+        return new Date() + "结果条数:" + maps.size();
     }
 
     @RequestMapping("print")

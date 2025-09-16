@@ -15,7 +15,7 @@ spring:
 #      hibernate:
 #        format_sql: true
   datasource:
-    url: jdbc:mysql://192.168.80.137:3306/our?serverTimezone=UTC
+    url: jdbc:mysql://localhost:3306/our?serverTimezone=UTC
     username: root
     password: root
     driverlassame: com.mysql.cj.jdbc.Driver

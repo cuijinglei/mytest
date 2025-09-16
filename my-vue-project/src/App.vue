@@ -87,7 +87,6 @@ export default {
 }
 .routerType {
   background-color: green;
-  height: 110px;
 }
 </style>
 
